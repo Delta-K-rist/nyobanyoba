@@ -75,7 +75,60 @@
   .lede{max-width:68ch;}
   .lede p{color:var(--ink-soft); font-size:1.05rem;}
 
-  /* Skip link */
+  /* ===== TIER 1: entrance animations ===== */
+  @keyframes heroIn{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .hero-photo-wrap,.hero-eyebrow,.hero-sub,.roles-list,.cta-row{
+    animation:heroIn .6s ease both;
+  }
+  .hero-photo-wrap{animation-delay:.05s;}
+  .hero-eyebrow{animation-delay:.15s;}
+  .hero-sub{animation-delay:.9s;}
+  .roles-list{animation-delay:1.05s;}
+  .cta-row{animation-delay:1.18s;}
+
+  .h-chunk{
+    display:inline-block; opacity:0; transform:translateY(10px);
+    animation:heroIn .5s ease forwards;
+  }
+  .h-chunk:nth-of-type(1){animation-delay:.25s;}
+  .h-chunk:nth-of-type(2){animation-delay:.4s;}
+  .h-chunk:nth-of-type(3){animation-delay:.55s;}
+  .h-chunk:nth-of-type(4){animation-delay:.7s;}
+  .h-chunk:nth-of-type(5){animation-delay:.85s;}
+
+  .net-line{
+    stroke-dasharray:700; stroke-dashoffset:700;
+    transition:stroke-dashoffset 1s ease;
+  }
+  .net-node{
+    opacity:0; transform:scale(.4); transform-origin:center;
+    transition:opacity .4s ease, transform .4s ease;
+  }
+  .symbol-wrap.draw .net-line{stroke-dashoffset:0;}
+  .symbol-wrap.draw .net-line:nth-of-type(2){transition-delay:.08s;}
+  .symbol-wrap.draw .net-line:nth-of-type(3){transition-delay:.16s;}
+  .symbol-wrap.draw .net-line:nth-of-type(4){transition-delay:.24s;}
+  .symbol-wrap.draw .net-line:nth-of-type(5){transition-delay:.32s;}
+  .symbol-wrap.draw .net-line:nth-of-type(6){transition-delay:.1s;}
+  .symbol-wrap.draw .net-line:nth-of-type(7){transition-delay:.18s;}
+  .symbol-wrap.draw .net-line:nth-of-type(8){transition-delay:.26s;}
+  .symbol-wrap.draw .net-line:nth-of-type(9){transition-delay:.34s;}
+  .symbol-wrap.draw .net-line:nth-of-type(10){transition-delay:.42s;}
+  .symbol-wrap.draw .net-line:nth-of-type(11){transition-delay:.55s;}
+  .symbol-wrap.draw .net-line:nth-of-type(12){transition-delay:.6s;}
+  .symbol-wrap.draw .net-line:nth-of-type(13){transition-delay:.7s;}
+  .symbol-wrap.draw .net-node{opacity:1; transform:scale(1); transition-delay:.75s;}
+
+  .count-num{font-variant-numeric:tabular-nums;}
+
+  @media (prefers-reduced-motion: reduce){
+    .net-line{stroke-dashoffset:0 !important; transition:none !important;}
+    .net-node{opacity:1 !important; transform:scale(1) !important; transition:none !important;}
+  }
+
   .skip-link{
     position:absolute; left:-999px; top:auto;
     background:var(--accent); color:#fff; padding:10px 16px;
@@ -338,9 +391,7 @@
     </div>
     <div>
       <p class="hero-eyebrow">Startup, AI, Data, Product, and Leadership</p>
-      <h1 class="hero-headline">
-        <span class="accent">4 Consecutive</span> National AI &amp; Data Wins + <span class="accent">IDR 350M</span> Startup Funding, All in <span class="accent">9 Months</span>
-      </h1>
+      <h1 class="hero-headline"><span class="h-chunk accent"><span class="count-num" data-target="4" data-delay="250" data-duration="700">4</span> Consecutive</span> <span class="h-chunk">National AI &amp; Data Wins +</span> <span class="h-chunk accent">IDR <span class="count-num" data-target="350" data-delay="550" data-duration="1600">350</span>M</span> <span class="h-chunk">Startup Funding, All in</span> <span class="h-chunk accent"><span class="count-num" data-target="9" data-delay="850" data-duration="700">9</span> Months</span></h1>
       <p class="hero-sub">Selamat pagi dunia, perkenalkan saya Deltakristiano Kurniaputra, mahasiswa yang sedang fokus di dunia Startup dan AI.</p>
 
 
@@ -406,33 +457,33 @@
         <title id="llmTitle">Simbol diri: jaringan LLM</title>
         <desc id="llmDesc">Ilustrasi beberapa node input di sisi kiri yang saling terhubung melalui garis-garis ke lapisan tengah, lalu menyatu menjadi satu node keluaran di sisi kanan — melambangkan proses menerima banyak masukan, menemukan hubungan, dan menghasilkan keputusan yang relevan dengan konteks.</desc>
         <g stroke="#4C5A8C" stroke-width="1">
-          <line x1="90" y1="40" x2="330" y2="90"/>
-          <line x1="90" y1="90" x2="330" y2="90"/>
-          <line x1="90" y1="130" x2="330" y2="90"/>
-          <line x1="90" y1="170" x2="330" y2="90"/>
-          <line x1="90" y1="220" x2="330" y2="90"/>
-          <line x1="90" y1="40" x2="330" y2="170"/>
-          <line x1="90" y1="90" x2="330" y2="170"/>
-          <line x1="90" y1="130" x2="330" y2="170"/>
-          <line x1="90" y1="170" x2="330" y2="170"/>
-          <line x1="90" y1="220" x2="330" y2="170"/>
-          <line x1="330" y1="90" x2="520" y2="130"/>
-          <line x1="330" y1="170" x2="520" y2="130"/>
-          <line x1="520" y1="130" x2="640" y2="130"/>
+          <line class="net-line" x1="90" y1="40" x2="330" y2="90"/>
+          <line class="net-line" x1="90" y1="90" x2="330" y2="90"/>
+          <line class="net-line" x1="90" y1="130" x2="330" y2="90"/>
+          <line class="net-line" x1="90" y1="170" x2="330" y2="90"/>
+          <line class="net-line" x1="90" y1="220" x2="330" y2="90"/>
+          <line class="net-line" x1="90" y1="40" x2="330" y2="170"/>
+          <line class="net-line" x1="90" y1="90" x2="330" y2="170"/>
+          <line class="net-line" x1="90" y1="130" x2="330" y2="170"/>
+          <line class="net-line" x1="90" y1="170" x2="330" y2="170"/>
+          <line class="net-line" x1="90" y1="220" x2="330" y2="170"/>
+          <line class="net-line" x1="330" y1="90" x2="520" y2="130"/>
+          <line class="net-line" x1="330" y1="170" x2="520" y2="130"/>
+          <line class="net-line" x1="520" y1="130" x2="640" y2="130"/>
         </g>
         <g fill="#8E9BCB">
-          <circle cx="90" cy="40" r="6"/>
-          <circle cx="90" cy="90" r="6"/>
-          <circle cx="90" cy="130" r="6"/>
-          <circle cx="90" cy="170" r="6"/>
-          <circle cx="90" cy="220" r="6"/>
+          <circle class="net-node" cx="90" cy="40" r="6"/>
+          <circle class="net-node" cx="90" cy="90" r="6"/>
+          <circle class="net-node" cx="90" cy="130" r="6"/>
+          <circle class="net-node" cx="90" cy="170" r="6"/>
+          <circle class="net-node" cx="90" cy="220" r="6"/>
         </g>
         <g fill="#C8D0EC">
-          <circle cx="330" cy="90" r="8"/>
-          <circle cx="330" cy="170" r="8"/>
+          <circle class="net-node" cx="330" cy="90" r="8"/>
+          <circle class="net-node" cx="330" cy="170" r="8"/>
         </g>
-        <circle cx="520" cy="130" r="10" fill="#F2C879"/>
-        <circle cx="640" cy="130" r="13" fill="#F2C879"/>
+        <circle class="net-node" cx="520" cy="130" r="10" fill="#F2C879"/>
+        <circle class="net-node" cx="640" cy="130" r="13" fill="#F2C879"/>
         <text x="90" y="20" fill="#ABB3CC" font-family="IBM Plex Mono, monospace" font-size="11">input</text>
         <text x="320" y="245" fill="#ABB3CC" font-family="IBM Plex Mono, monospace" font-size="11">hubungan &amp; konteks</text>
         <text x="600" y="115" fill="#ABB3CC" font-family="IBM Plex Mono, monospace" font-size="11">output</text>
@@ -640,6 +691,51 @@
       toggle.setAttribute('aria-expanded','false');
     });
   });
+
+  // ===== TIER 1/2: entrance effects (load- and scroll-position only,
+  // no interaction with clicks/navigation — kept isolated from the nav
+  // logic above on purpose, given this platform's history with anything
+  // touching link/scroll behavior). =====
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Count-up numbers in the hero headline, once, on load — each number
+  // starts counting when its own phrase-chunk becomes visible, not all
+  // three simultaneously, and duration scales per-number (see data-*).
+  document.querySelectorAll('.count-num').forEach(function(el){
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    var delay = parseInt(el.getAttribute('data-delay'), 10) || 0;
+    var duration = parseInt(el.getAttribute('data-duration'), 10) || 900;
+    if (reduceMotion || isNaN(target)) return;
+    el.textContent = 0;
+    setTimeout(function(){
+      var start = null;
+      function step(ts){
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(step);
+    }, delay);
+  });
+
+  // SVG network symbol draws itself in once, when it scrolls into view.
+  var symbolWrap = document.querySelector('.symbol-wrap');
+  if (symbolWrap && 'IntersectionObserver' in window){
+    var symbolObs = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          symbolWrap.classList.add('draw');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+    symbolObs.observe(symbolWrap);
+  } else if (symbolWrap){
+    symbolWrap.classList.add('draw');
+  }
 
   // Active nav highlight on scroll
   var sections = ['tentang','misi','prestasi','pengalaman','kontak'].map(function(id){
